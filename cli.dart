@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 const version = '0.0.1';
 
 void main(List<String> arguments) {
