@@ -1,0 +1,13 @@
+name: darpedia_cli
+description: A simple CLI tool to fetch Wikipedia article summaries.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  http: ^1.2.2
+
+dev_dependencies:
+  lints: ^5.0.0
