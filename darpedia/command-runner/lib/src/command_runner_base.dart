@@ -1,7 +1,20 @@
-class CommandRunner {
+import 'dart:collection';
+import 'dart:ffi';
+import 'dart:io';
+import 'arguments.dart';
 
- Future<void> run(List<String> input) async {
-  print("CommandRunner received arguments: $input");
-  // Here you would implement the logic to parse the input and execute the corresponding command.
- }
+class CommandRunner {
+  final Map<String, Command> _commands = <String, Command>{};
+
+  UnmodifiableSetView<Command> get commands => UnmodifiableSetView<Command>(<Command>{..._commands.values});
+
+  Future<void> run(List<String> input) async {
+    final ArgResults results = parse(input);
+    if (results.command != null) {
+      Object? output = await results.command!.run(results);
+      if (output != null) {
+        print(output.toString());
+      }
+    }
+  }
 }
